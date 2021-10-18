@@ -7,3 +7,4 @@ id*.java
 *.class
 *.jar
 *.tokens
+compilador*.py
