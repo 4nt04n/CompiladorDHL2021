@@ -2,7 +2,7 @@
 #*
 target
 .antlr
-__pycache__
+__pycache__     
 compilador*.java
 *.out
 *.class
