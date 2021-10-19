@@ -5,11 +5,14 @@ from compiladorParser import compiladorParser
 
 
 def main(argv):
-    input = FileStream(argv[1])
+    archivo = "src/entrada.txt"
+    if len(argv) > 1 :
+        archivo = argv[1]
+    input = FileStream(archivo)
     lexer = compiladorLexer(input)
     stream = CommonTokenStream(lexer)
     parser = compiladorParser(stream)
-    tree = parser.r()
+    tree = parser.s()
     print(tree.toStringTree(recog=parser))
 
 if __name__ == '__main__':

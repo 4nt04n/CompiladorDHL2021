@@ -31,7 +31,7 @@
             // Archivo con la gramatica
             "grammar": "${file}",
             // Archivo a parsear
-            "input": "input/entrada.txt",
+            "input": "src/entrada.txt",
             // Simbolo inicial
             "startRule": "s",
             // Muestra Arbol Sintactico

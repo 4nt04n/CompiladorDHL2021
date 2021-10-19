@@ -9,17 +9,17 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         // create a CharStream that reads from file
-        // CharStream input = CharStreams.fromFileName("src/entrada.txt");
-        CharStream input = CharStreams.fromFileName("src/datos.txt");
+        CharStream input = CharStreams.fromFileName("src/entrada.txt");
+        // CharStream input = CharStreams.fromFileName("src/datos.txt");
 
         // create a lexer that feeds off of input CharStream
-        // interpreteLexer lexer = new interpreteLexer(input);
+        compiladorLexer lexer = new compiladorLexer(input);
         
         // create a buffer of tokens pulled from the lexer
-        // CommonTokenStream tokens = new CommonTokenStream(lexer);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
         
         // create a parser that feeds off the tokens buffer
-        // interpreteParser parser = new interpreteParser(tokens);
+        compiladorParser parser = new compiladorParser(tokens);
 
         // create Listener
         // compiladorBaseListener escucha = new MiListener();
