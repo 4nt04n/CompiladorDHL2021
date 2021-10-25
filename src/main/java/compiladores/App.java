@@ -9,16 +9,19 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         // create a CharStream that reads from file
-        CharStream input = CharStreams.fromFileName("src/entrada.txt");
+        CharStream input = CharStreams.fromFileName("src/FechasHoras.txt");
+        // CharStream input = CharStreams.fromFileName("src/entrada.txt");
         // CharStream input = CharStreams.fromFileName("src/datos.txt");
 
         // create a lexer that feeds off of input CharStream
+        // compiladorLexer lexer = new compiladorLexer(input);
         compiladorLexer lexer = new compiladorLexer(input);
         
         // create a buffer of tokens pulled from the lexer
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         
         // create a parser that feeds off the tokens buffer
+        // compiladorParser parser = new compiladorParser(tokens);
         compiladorParser parser = new compiladorParser(tokens);
 
         // create Listener
@@ -31,7 +34,7 @@ public class App {
         // En este caso la regla es el simbolo inicial
         // parser.horas();
     
-        // ParseTree tree = parser.s();
+        ParseTree tree = parser.s();
 
         // Conectamos el visitor
         // MiVisitor<ParseTree> visitor = new MiVisitor<>();

@@ -1,5 +1,10 @@
 grammar compilador;
 
+// Solo para Java
+// @header{
+// package compiladores;
+// }
+
 LETRA : [A-Za-z] ;
 DIGITO : [0-9] ;
 
