@@ -1,0 +1,80 @@
+Análisis sintáctico
+
+Mira estructura del programa
+
+Ej -> Artículo sustantivo verbo
+
+        El perro corre -> Ok
+        La árbol vuela -> Ok
+
+Dos tipos:
+    - Análisis Sintáctico Descendente
+    - Análisis Sintáctico Ascendente
+
+
+Análisis Sintáctico Descendente
+
+Un ASD tiene dos funciones básicas:
+    - derivar
+    - match
+
+Regla
+s : '(' s ')' s
+  |
+  ;
+
+Entrada:
+(())()
+
+$ s                   (())() $ derivar
+$ s ) s (             (())() $ match
+$ s ) s                ())() $ derivar
+$ s ) s ) s (          ())() $ match
+$ s ) s ) s             ))() $ derivar
+$ s ) s )               ))() $ match
+$ s ) s                  )() $ derivar
+$ s )                    )() $ match
+$ s                       () $ derivar
+$ s ) s (                 () $ match
+$ s ) s                    ) $ derivar
+$ s )                      ) $ match
+$ s                          $ derivar
+$                            $ Ok
+
+            s
+        /  /  \     \
+       (   s   )      s
+        / / \ \    / / \ \
+       (  s  ) s  (  s  ) s
+          |    |     |    |
+
+
+Entrada:
+(()()
+
+$ s                    (()() $ derivar
+$ s ) s (              (()() $ match
+$ s ) s                 ()() $ derivar
+$ s ) s ) s              )() $ derivar
+$ s ) s                   () $ match
+$ s ) s                   () $ derivar
+$ s ) s ) s (             () $ match
+$ s ) s ) s                ) $ derivar
+$ s ) s )                  ) $ match
+$ s ) s                      $ derivar
+$ s )                        $ ERROR
+
+
+Entrada:
+(()))
+
+$ s                    (())) $ derivar
+$ s ) s (              (())) $ match
+$ s ) s                 ())) $ derivar
+$ s ) s ) s (           ())) $ match
+$ s ) s ) s              ))) $ derivar
+$ s ) s )                ))) $ match
+$ s ) s                   )) $ derivar
+$ s )                     )) $ match
+$ s                        ) $ derivar
+$                          ) $ ERROR
