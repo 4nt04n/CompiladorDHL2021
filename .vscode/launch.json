@@ -31,9 +31,9 @@
             // Archivo con la gramatica
             "grammar": "${file}",
             // Archivo a parsear
-            "input": "src/parentesis.txt",
+            "input": "src/programa.txt",
             // Simbolo inicial
-            "startRule": "si",
+            "startRule": "prog",
             // Muestra Arbol Sintactico
             "printParseTree": true,
             "visualParseTree": true

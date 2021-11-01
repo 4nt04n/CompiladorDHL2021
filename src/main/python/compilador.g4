@@ -5,21 +5,62 @@ grammar compilador;
 // package compiladores;
 // }
 
+fragment LETRA : [A-Za-z] ;
+fragment DIGITO : [0-9] ;
+
 PA : '(' ;
 PC : ')' ;
+LLA : '{' ;
+LLC : '}' ;
+ASIGN : '=' ;
+PYC : ';' ;
 
-LETRA : [A-Za-z] ;
-DIGITO : [0-9] ;
+INT : 'int' ;
+WHILE : 'while' ;
 
-// ID : (LETRA | '_') (LETRA | DIGITO | '_')* ;
+
+ID : (LETRA | '_') (LETRA | DIGITO | '_')* ;
+
+ENTERO : DIGITO+ ;
 
 WS : [ \t\n\r] -> skip ;
 
-si : s ;
 
-s : PA s PC s
-  |
-  ;
+prog : instrucciones EOF ;
+
+instrucciones : instruccion instrucciones
+              |
+              ;
+
+instruccion : declaracion
+            | asignacion
+            | iwhile
+            | LLA instrucciones LLC
+            ;
+
+
+asignacion : ID ASIGN ENTERO PYC ;
+
+iwhile : WHILE PA cond PC instruccion;
+
+cond : ID ; // No corresponde
+
+declaracion : tipodato ID PYC
+            // | tipodato ID EQ algo PYC
+            ;
+
+tipodato : INT
+         ;
+
+// instruccion : ENTERO
+//             | ID
+//             ;
+
+// si : s ;
+
+// s : PA s PC s
+//   |
+//   ;
 
 // s : LETRA  {print("Letra  = " + $LETRA.text)} s
 //   | DIGITO {print("Digito = " + $DIGITO.text)} s

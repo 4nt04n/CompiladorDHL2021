@@ -78,3 +78,74 @@ $ s ) s                   )) $ derivar
 $ s )                     )) $ match
 $ s                        ) $ derivar
 $                          ) $ ERROR
+
+
+--------
+Análisis Sintáctico Ascendente
+
+Un ASA tiene dos funciones básicas:
+    - desplazar
+    - reducir
+
+Regla
+s : '(' s ')' s
+  |
+  ;
+
+Entrada:
+(())()
+
+$                     (())() $ desplazar
+$ (                    ())() $ desplazar
+$ ( (                   ))() $ reducir
+$ ( ( s                 ))() $ desplazar
+$ ( ( s )                )() $ reducir
+$ ( ( s ) s              )() $ reducir
+$ ( s                    )() $ desplazar
+$ ( s )                   () $ desplazar
+$ ( s ) (                  ) $ reducir
+$ ( s ) ( s                ) $ desplazar
+$ ( s ) ( s )                $ reducir
+$ ( s ) ( s ) s              $ reducir
+$ ( s ) s                    $ reducir
+$ s                          $ OK
+
+
+          s
+       / | \   \
+      /  s  \     s
+     / // \\ \   // \\
+    ( ( s ) s ) ( s ) s
+        |   |     |   |
+
+
+Entrada:
+(()()
+
+$                      (()() $ desplazar
+$ (                     ()() $ desplazar
+$ ( (                    )() $ reducir
+$ ( ( s                  )() $ desplazar
+$ ( ( s )                 () $ desplazar
+$ ( ( s ) (                ) $ reducir
+$ ( ( s ) ( s              ) $ desplazar
+$ ( ( s ) ( s )              $ reducir
+$ ( ( s ) ( s ) s            $ reducir
+$ ( ( s ) s                  $ reducir
+$ ( s                        $ ERROR
+
+
+Entrada:
+(()))
+
+$                      (())) $ desplazar
+$ (                     ())) $ desplazar
+$ ( (                    ))) $ reducir
+$ ( ( s                  ))) $ desplazar
+$ ( ( s )                 )) $ reducir
+$ ( ( s ) s               )) $ reducir
+$ ( s                     )) $ desplazar
+$ ( s )                    ) $ reducir
+$ ( s ) s                  ) $ reducir
+$ s                        ) $ ERROR
+
