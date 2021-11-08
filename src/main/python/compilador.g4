@@ -17,7 +17,7 @@ PYC : ';' ;
 
 INT : 'int' ;
 WHILE : 'while' ;
-
+FOR : 'for' ;
 
 ID : (LETRA | '_') (LETRA | DIGITO | '_')* ;
 
@@ -35,13 +35,17 @@ instrucciones : instruccion instrucciones
 instruccion : declaracion
             | asignacion
             | iwhile
-            | LLA instrucciones LLC
+            // | ifor
+            | bloque
             ;
 
+bloque : LLA instrucciones LLC ;
 
 asignacion : ID ASIGN ENTERO PYC ;
 
 iwhile : WHILE PA cond PC instruccion;
+
+// ifor : FOR PA ? PYC ? PYC ? PC instruccion ;
 
 cond : ID ; // No corresponde
 

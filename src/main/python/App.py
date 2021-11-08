@@ -2,17 +2,20 @@ import sys
 from antlr4 import *
 from compiladorLexer import compiladorLexer
 from compiladorParser import compiladorParser
+from miListener import miListener
 
 
 def main(argv):
-    archivo = "src/parentesis.txt"
+    archivo = "src/programa.txt"
     if len(argv) > 1 :
         archivo = argv[1]
     input = FileStream(archivo)
     lexer = compiladorLexer(input)
     stream = CommonTokenStream(lexer)
     parser = compiladorParser(stream)
-    tree = parser.si()
+    escucha = miListener()
+    parser.addParseListener(escucha)
+    tree = parser.prog()
     print(tree.toStringTree(recog=parser))
 
 if __name__ == '__main__':
