@@ -2,6 +2,7 @@ import sys
 from antlr4 import *
 from compiladorLexer import compiladorLexer
 from compiladorParser import compiladorParser
+from miVisitor import miVisitor
 from miListener import miListener
 
 
@@ -17,6 +18,8 @@ def main(argv):
     parser.addParseListener(escucha)
     tree = parser.prog()
     print(tree.toStringTree(recog=parser))
+    walker = miVisitor()
+    walker.visit(tree)
 
 if __name__ == '__main__':
     main(sys.argv)
