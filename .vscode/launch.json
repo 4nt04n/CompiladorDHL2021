@@ -33,7 +33,7 @@
             // Archivo a parsear
             "input": "src/programa.txt",
             // Simbolo inicial
-            "startRule": "prog",
+            "startRule": "codigo",
             // Muestra Arbol Sintactico
             "printParseTree": true,
             "visualParseTree": true

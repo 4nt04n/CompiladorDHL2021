@@ -1,0 +1,31 @@
+@startuml TablaSimbolos
+
+skinparam ClassAttributeIconSize 0
+hide circle
+
+class Tabla {
+  - List< Dict<String,ID> > ts
+  + buscarID: Bool
+  + buscarIDlocal: Bool
+  + addId (ID)
+  + addContexto()
+  + delContexto()
+}
+
+class ID <<abstract>>{
+  - String nombre
+  - String tipo
+  - Boolean inicializada
+  - Boolean usada
+}
+
+class Variable extends ID{
+  }
+
+class Funtion extends ID{
+  - List<Variable> parametros
+  }
+
+Tabla -> ID
+
+@enduml

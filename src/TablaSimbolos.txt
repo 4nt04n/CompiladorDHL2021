@@ -1,0 +1,10 @@
+Variable --> Nombre: x, Tipo: double, Inicializada: True, Usada: False | 
+ ----------------------------------------
+
+ ----------------------------------------
+Variable --> Nombre: x, Tipo: int, Inicializada: False, Usada: False | Variable --> Nombre: segunda, Tipo: int, Inicializada: False, Usada: False | Variable --> Nombre: t3, Tipo: int, Inicializada: False, Usada: False | Variable --> Nombre: w, Tipo: int, Inicializada: True, Usada: False | Variable --> Nombre: t, Tipo: int, Inicializada: True, Usada: False | Variable --> Nombre: a, Tipo: int, Inicializada: False, Usada: False | 
+ ----------------------------------------
+
+ ----------------------------------------
+Funcion --> Nombre: nombreFuncion, Tipo:int, Parametros: ['intvarFun'] | 
+ ----------------------------------------

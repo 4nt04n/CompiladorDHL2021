@@ -1,0 +1,28 @@
+
+======================================
+    TABLA DE SIMBOLOS
+======================================
+
+Contiene todos los ID del programa
+
+ID de tipo variables
+ID de tipo funciones 
+
+#si se declara una funcion y una variable con el mismo nombre, sobrevive la ultima
+
+Se la usa para la compilacion y para la depuracion
+$gcc -g hola.c 
+$gdb ./a.out
+el flag -g se usa para depurar solamente.
+en la compilacion el -g incorpora la tabla de simbolos por lo que se
+pueden ver los nombres de las variables porej
+
+La TS (tabla de simbolos) recolecta todos los ID y los clasifica por contexto
+
+Los ID se buscan desde el contexto local hacia el global
+Los ID se agregan solo en el contexto local
+
+Necesitamos implementar las funciones:
+    -Buscar ID -> recorre los contextos de local a global
+    -Buscar ID Local -> solo localmente
+    -Agregar ID -> agrega ID en el contexto local
